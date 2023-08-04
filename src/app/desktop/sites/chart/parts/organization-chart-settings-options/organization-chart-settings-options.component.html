@@ -1,0 +1,62 @@
+<div id="oChartSettingsOverflow" class="bg-white/80 duration-300" [ngStyle]="{'height': displayMenu ? height + 'px' : '0'}" (window:resize)="onResize($event)">
+  <div id="oChartSettingsScrollBox" class="p-8 flex flex-col gap-y-4">
+
+    <ng-container *ngIf="layoutType === 'pc'">
+      <div>
+        <div class="text-gray-700 uppercase text-sm">Controls<span class="ml-2 text-gray-300 text-sm lowercase">(alpha)</span></div>
+        <div class="mt-4 flex justify-between items-center">
+          <div class="flex items-center">
+<!--            <fa-icon [icon]="['fas', 'up-down-left-right']" class="text-2xl mr-4"></fa-icon>-->
+            Drag to scroll
+          </div>
+          <div (click)="toggleScrollOnPC()" class="cursor-pointer">
+            <app-part-switch [value]="scrollOnPC"></app-part-switch>
+          </div>
+        </div>
+      </div>
+
+      <div class="solidLine"></div>
+    </ng-container>
+
+    <div class="flex flex-col gap-y-4">
+      <div class="text-gray-700 uppercase text-sm">View</div>
+
+      <div class="flex justify-between items-center">
+        <div class="flex items-center">
+          <img src="../../../assets/icons/suche.svg" alt="Search Icon" class="opacity-80 w-6 mr-2">
+          <div (click)="resetScaleMultiplier()" class="py-2 px-3 rounded-full duration-100"
+               [ngClass]="scaleMultiplier === 100 ? 'cursor-default' : 'cursor-pointer bg-gray-200 hover:bg-gray-300'"
+               [title]="scaleMultiplier === 100 ? '' : 'Zurück setzen'">
+            {{scaleMultiplier}}%
+          </div>
+        </div>
+        <div class="flex gap-x-2">
+          <div
+            class="w-12 h-12 bg-gray-200 flex justify-center items-center rounded-full select-none text-xl hover:bg-gray-300 duration-100"
+            [ngClass]="scaleMultiplier === 10 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'"
+            (click)="setScaleMultiplier(false)">
+            <img src="../../../assets/icons/minus.svg" alt="Zooms content smaller" class="opacity-80 w-3">
+          </div>
+          <div
+            class="w-12 h-12 bg-gray-200 flex justify-center items-center rounded-full select-none text-xl hover:bg-gray-300 duration-100"
+            [ngClass]="scaleMultiplier === 200 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'"
+            (click)="setScaleMultiplier(true)">
+            <img src="../../../assets/icons/plus.svg" alt="Zooms content bigger" class="opacity-80 w-3">
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center">
+        <div class="flex items-center">
+<!--          <fa-icon [icon]="['fas', 'display']" class="text-2xl mr-4"></fa-icon>-->
+          Present chart
+        </div>
+        <div (click)="enablePresentationMode()" class="cursor-pointer bg-gray-200 hover:bg-gray-300 p-3 rounded-full duration-100">
+          start presentation mode
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
