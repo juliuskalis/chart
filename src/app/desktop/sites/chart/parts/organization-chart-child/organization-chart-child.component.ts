@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {OrganizationChartService} from "../../services/organization-chart.service";
 import {registerLocaleData} from "@angular/common";
 import de from "@angular/common/locales/de";
-import {DataModel} from "../../../../../bussiness-domain/models/data.model";
+import {DataGroupModel, DataModel} from "../../../../../bussiness-domain/models/data.model";
 import {getClassesForLayoutRule} from "../../../../../bussiness-domain/rules/getClassesForLayout.rule";
 
 @Component({
@@ -12,7 +12,7 @@ import {getClassesForLayoutRule} from "../../../../../bussiness-domain/rules/get
 })
 export class OrganizationChartChildComponent implements OnInit {
 
-  @Input() orga: DataModel[] | undefined = [];
+  @Input() orga: (DataModel | DataGroupModel)[] | undefined | null = [];
   @Input() showName: boolean | undefined;
   @Input() showTitle: boolean | undefined;
   @Input() clipped: string | undefined;
@@ -32,6 +32,7 @@ export class OrganizationChartChildComponent implements OnInit {
   ngOnInit() {
 
     if (this.orga) {
+      console.log(this.orga[0]);
       this.orga.forEach(o => { // for every element
         if (o.children?.length === undefined) { // when element has no children
           this.peopleWithoutChildren.push(o);

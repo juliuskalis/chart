@@ -27,6 +27,8 @@ import {
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {chartReducer} from "./bussiness-domain/store/reducers/chart.reducer";
+import {groupsReducer} from "./bussiness-domain/store/reducers/groups.reducer";
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     AppRoutingModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ chartData: chartReducer, groupsData: groupsReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [],

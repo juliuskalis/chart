@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import {Subject, takeUntil} from "rxjs";
+import {Observable, Subject, takeUntil} from "rxjs";
 import {Router} from "@angular/router";
 import {OrganizationChartService} from "./services/organization-chart.service";
 
-import {getParentRule} from "../../../bussiness-domain/rules/get-parent.rule";
-import {generateObjectStructureRule} from "../../../bussiness-domain/rules/generate-object-structure.rule";
-import {calculateChildrenLengthRule} from "../../../bussiness-domain/rules/calculate-children-length.rule";
 import {DATA_CONST} from "../../../bussiness-domain/consts/data.const";
+import {Store} from "@ngrx/store";
+import {DataGroupModel, DataModel} from "../../../bussiness-domain/models/data.model";
+import {
+  generateChartStructureSelector
+} from "../../../bussiness-domain/store/selectors/generateChartStructure.selector";
 
 @Component({
   selector: 'app-chart',
@@ -15,7 +17,8 @@ import {DATA_CONST} from "../../../bussiness-domain/consts/data.const";
 })
 export class ChartComponent {
   data: any[] = DATA_CONST;
-  organizationChart: any[] = [];
+  organizationChart: Observable<(DataModel | DataGroupModel)[] | undefined> = this.store$.select(generateChartStructureSelector);
+  // Observable<(DataModel | DataGroupModel)[] | undefined> = this.store$.select(generateChartStructureSelector)
   go = true;
 
   displayChildren: boolean = true;
@@ -37,13 +40,14 @@ export class ChartComponent {
 
   constructor(
     private router: Router,
-    private organizationChartService: OrganizationChartService
+    private organizationChartService: OrganizationChartService,
+    private store$: Store
   ) {}
 
   ngOnInit(): void {
-    console.log('data', this.data);
-    this.checkForHash();
-    this.start();
+    // console.log('data', this.data);
+    // this.checkForHash();
+    // this.start();
   }
 
   checkForHash() {
@@ -87,15 +91,15 @@ export class ChartComponent {
   }
 
   loadOrganigramm() {
-    const start = this.data.find(x => x.id === this.pinnedUserId); // finds data for selected value
-    if (start) {
-      this.organizationChart = [start]; // adds selected data as start reference
-      this.organizationChart = generateObjectStructureRule(this.organizationChart); // starts object generation
-      calculateChildrenLengthRule(this.organizationChart); // loops through the generated structure and adds the total number of children from children ...
-      if (!this.startFrom) {
-        this.organizationChart = getParentRule(this.organizationChart); // starts object generation for parents
-      }
-    }
+    // const start = this.data.find(x => x.id === this.pinnedUserId); // finds data for selected value
+    // if (start) {
+    //   this.organizationChart = [start]; // adds selected data as start reference
+    //   this.organizationChart = generateObjectStructureRule(this.organizationChart); // starts object generation
+    //   calculateChildrenLengthRule(this.organizationChart); // loops through the generated structure and adds the total number of children from children ...
+    //   if (!this.startFrom) {
+    //     this.organizationChart = getParentRule(this.organizationChart); // starts object generation for parents
+    //   }
+    // }
   }
 
   scrollToId(value: string, select?: boolean) {
