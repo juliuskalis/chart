@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import {Observable, Subject, takeUntil} from "rxjs";
-import {Router} from "@angular/router";
+import {Observable} from "rxjs";
 import {OrganizationChartService} from "./services/organization-chart.service";
 
-import {DATA_CONST} from "../../../bussiness-domain/consts/data.const";
 import {Store} from "@ngrx/store";
 import {DataGroupModel, DataModel} from "../../../bussiness-domain/models/data.model";
 import {
@@ -16,91 +14,16 @@ import {
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent {
-  data: any[] = DATA_CONST;
-  organizationChart: Observable<(DataModel | DataGroupModel)[] | undefined> = this.store$.select(generateChartStructureSelector);
-  // Observable<(DataModel | DataGroupModel)[] | undefined> = this.store$.select(generateChartStructureSelector)
-  go = true;
-
-  displayChildren: boolean = true;
-  displayName: boolean = true;
-  displayTitle: boolean = false;
-  clipped: string = 'null';
-  urlHash: string | null | undefined;
+  chartData$: Observable<(DataModel | DataGroupModel)[] | undefined> = this.store$.select(generateChartStructureSelector);
 
   scaleMultiplier: number = 100;
 
   selectedUserId: string | undefined;
-  selectedUser: any;
-  pinnedUserId: any | undefined;
-  startFrom: boolean = false;
-
-  presentationMode: boolean = false;
-
-  destroy: Subject<boolean> = new Subject<boolean>();
 
   constructor(
-    private router: Router,
     private organizationChartService: OrganizationChartService,
     private store$: Store
   ) {}
-
-  ngOnInit(): void {
-    // console.log('data', this.data);
-    // this.checkForHash();
-    // this.start();
-  }
-
-  checkForHash() {
-    this.urlHash = window.location.hash.split('#')[1];
-    if (this.urlHash && this.data.find(x => x.id === this.urlHash)) {
-      this.organizationChartService.pinUserId(this.urlHash);
-      // window.location.hash = '';
-    }
-  }
-
-  // one time call
-  start() {
-    this.organizationChartService.scaleMultiplier.pipe(takeUntil(this.destroy)).subscribe((val: number) => {
-      this.scaleMultiplier < val ? this.calculateNewPosition((val - this.scaleMultiplier) / 100) : this.calculateNewPosition((val - this.scaleMultiplier) / 100);
-      this.scaleMultiplier = val;
-    });
-    this.organizationChartService.selectedUserId.pipe(takeUntil(this.destroy)).subscribe((userId: string | undefined) => {
-      this.selectedUserId = userId;
-      if (userId) {
-        this.selectedUser = this.data.find((x: any) => x.id === this.selectedUserId);
-      }
-    });
-    this.organizationChartService.pinnedUserId.pipe(takeUntil(this.destroy)).subscribe((userId: string | null) => {
-      if (userId) {
-        this.pinnedUserId = userId;
-        this.loadOrganigramm();
-      }
-    });
-    this.organizationChartService.startFrom.pipe(takeUntil(this.destroy)).subscribe((start: boolean) => {
-      this.startFrom = start;
-      this.loadOrganigramm();
-    });
-    this.organizationChartService.userToScroll.pipe(takeUntil(this.destroy)).subscribe((val: string | undefined) => {
-      if (val) {
-        this.scrollToId(val);
-      }
-    });
-    this.organizationChartService.presentationMode.pipe(takeUntil(this.destroy)).subscribe((mode: boolean) => {
-      this.presentationMode = mode;
-    });
-  }
-
-  loadOrganigramm() {
-    // const start = this.data.find(x => x.id === this.pinnedUserId); // finds data for selected value
-    // if (start) {
-    //   this.organizationChart = [start]; // adds selected data as start reference
-    //   this.organizationChart = generateObjectStructureRule(this.organizationChart); // starts object generation
-    //   calculateChildrenLengthRule(this.organizationChart); // loops through the generated structure and adds the total number of children from children ...
-    //   if (!this.startFrom) {
-    //     this.organizationChart = getParentRule(this.organizationChart); // starts object generation for parents
-    //   }
-    // }
-  }
 
   scrollToId(value: string, select?: boolean) {
     /**
@@ -134,10 +57,5 @@ export class ChartComponent {
       scrollContainer.scrollLeft = scrollContainer.scrollLeft * (1 + val);
       scrollContainer.scrollTop = scrollContainer.scrollTop * (1 + val);
     }
-  }
-
-  ngOnDestroy(): void {
-    this.destroy.next(true);
-    this.destroy.complete();
   }
 }

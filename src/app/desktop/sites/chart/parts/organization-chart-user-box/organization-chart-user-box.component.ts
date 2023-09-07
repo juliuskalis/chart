@@ -5,11 +5,11 @@ import {DataGroupModel} from "../../../../../bussiness-domain/models/data.model"
 import {isDataModelType} from "../../../../../bussiness-domain/types/isDataModel.type";
 
 @Component({
-  selector: 'app-part-organization-chart-box',
-  templateUrl: './organization-chart-box.component.html',
-  styleUrls: ['./organization-chart-box.component.scss']
+  selector: 'app-part-organization-chart-user-box',
+  templateUrl: './organization-chart-user-box.component.html',
+  styleUrls: ['./organization-chart-user-box.component.scss']
 })
-export class OrganizationChartBoxComponent {
+export class OrganizationChartUserBoxComponent {
 
   @Input() user: User | DataGroupModel | undefined;
   @Input() selectedUser: string | undefined;

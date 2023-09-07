@@ -22,13 +22,14 @@ import {
   OrganizationChartSelectedUserBoxContentComponent
 } from "./desktop/sites/chart/parts/organization-chart-selected-user-box-content/organization-chart-selected-user-box-content.component";
 import {
-  OrganizationChartBoxComponent
-} from "./desktop/sites/chart/parts/organization-chart-box/organization-chart-box.component";
+  OrganizationChartUserBoxComponent
+} from "./desktop/sites/chart/parts/organization-chart-user-box/organization-chart-user-box.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {chartReducer} from "./bussiness-domain/store/reducers/chart.reducer";
 import {groupsReducer} from "./bussiness-domain/store/reducers/groups.reducer";
+import { ChartUserOrGroupComponent } from './desktop/sites/chart/parts/chart-user-or-group/chart-user-or-group.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {groupsReducer} from "./bussiness-domain/store/reducers/groups.reducer";
     OrganizationChartSettingsOptionsComponent,
     SwitchComponent,
     OrganizationChartSelectedUserBoxContentComponent,
-    OrganizationChartBoxComponent
+    OrganizationChartUserBoxComponent,
+    ChartUserOrGroupComponent
   ],
   imports: [
     BrowserModule,

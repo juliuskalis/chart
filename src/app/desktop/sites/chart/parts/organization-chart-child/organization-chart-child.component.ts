@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {OrganizationChartService} from "../../services/organization-chart.service";
 import {registerLocaleData} from "@angular/common";
 import de from "@angular/common/locales/de";
 import {DataGroupModel, DataModel} from "../../../../../bussiness-domain/models/data.model";
@@ -12,32 +11,31 @@ import {getClassesForLayoutRule} from "../../../../../bussiness-domain/rules/get
 })
 export class OrganizationChartChildComponent implements OnInit {
 
-  @Input() orga: (DataModel | DataGroupModel)[] | undefined | null = [];
+  @Input() children: (DataModel | DataGroupModel)[] = [];
   @Input() showName: boolean | undefined;
   @Input() showTitle: boolean | undefined;
   @Input() clipped: string | undefined;
   @Input() selectedUser: string | undefined;
   @Input() scaleMultiplier: number = 100;
 
-  peopleWithoutChildren: any[] = [];
-  peopleWithChildren: any[] = [];
+  peopleWithoutChildren: (DataModel | DataGroupModel)[] = [];
+  peopleWithChildren: (DataModel | DataGroupModel)[] = [];
 
   customStylesClass: string = '';
   parentBoxPadding: number = 0;
 
-  constructor(private organizationChartService: OrganizationChartService) {
+  constructor() {
     registerLocaleData(de);
   }
 
   ngOnInit() {
-
-    if (this.orga) {
-      console.log(this.orga[0]);
-      this.orga.forEach(o => { // for every element
-        if (o.children?.length === undefined) { // when element has no children
-          this.peopleWithoutChildren.push(o);
+    if (this.children) {
+      console.log(this.children);
+      this.children.forEach(child => { // for every element
+        if (child.children?.length === undefined) { // when element has no children
+          this.peopleWithoutChildren.push(child);
         } else { // when element has children
-          this.peopleWithChildren.push(o);
+          this.peopleWithChildren.push(child);
         }
       });
       this.customStylesClass = getClassesForLayoutRule(this.peopleWithoutChildren.length);
