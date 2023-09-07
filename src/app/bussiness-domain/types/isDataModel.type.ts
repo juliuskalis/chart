@@ -4,6 +4,10 @@ export function isDataModelType(element: DataModel | DataGroupModel): element is
   return !('people' in element);
 }
 
+export function isDataGroupModelType(element: DataModel | DataGroupModel): element is DataGroupModel {
+  return ('people' in element);
+}
+
 export function instanceOfA(object: any): object is DataGroupModel {
   return 'people' in object;
 }

@@ -1,8 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {OrganizationChartService} from "../../services/organization-chart.service";
 import {User} from "../../models/User";
-import {DataGroupModel} from "../../../../../bussiness-domain/models/data.model";
-import {isDataModelType} from "../../../../../bussiness-domain/types/isDataModel.type";
 
 @Component({
   selector: 'app-part-organization-chart-user-box',
@@ -11,7 +9,7 @@ import {isDataModelType} from "../../../../../bussiness-domain/types/isDataModel
 })
 export class OrganizationChartUserBoxComponent {
 
-  @Input() user: User | DataGroupModel | undefined;
+  @Input() user: User | undefined;
   @Input() selectedUser: string | undefined;
 
   constructor(private organizationChartService: OrganizationChartService) {}
@@ -25,6 +23,4 @@ export class OrganizationChartUserBoxComponent {
       }
     }
   }
-
-  protected readonly isDataModelType = isDataModelType;
 }

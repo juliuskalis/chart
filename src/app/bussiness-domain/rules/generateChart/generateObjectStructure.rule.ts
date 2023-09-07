@@ -1,5 +1,6 @@
 import {DataGroupModel, DataModel} from "../../models/data.model";
 import {isDataModelType} from "../../types/isDataModel.type";
+import {getPeoplesFirstAndLastLetterRule} from "./getPeoplesFirstAndLastLetter.rule";
 
 export function generateObjectStructureRule(chartChildren: (DataModel | DataGroupModel)[], chartData: (DataModel | DataGroupModel)[]): (DataModel | DataGroupModel)[] {
   return chartChildren.map((el) => {
@@ -15,7 +16,8 @@ export function generateObjectStructureRule(chartChildren: (DataModel | DataGrou
       return {
         ...el,
         displayChildren: true,
-        children: children.length > 0 ? generateObjectStructureRule(children, chartData) : undefined
+        children: children.length > 0 ? generateObjectStructureRule(children, chartData) : undefined,
+        people: getPeoplesFirstAndLastLetterRule(el.people)
       }
     }
   });

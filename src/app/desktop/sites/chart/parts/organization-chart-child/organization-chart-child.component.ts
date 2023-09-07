@@ -30,7 +30,6 @@ export class OrganizationChartChildComponent implements OnInit {
 
   ngOnInit() {
     if (this.children) {
-      console.log(this.children);
       this.children.forEach(child => { // for every element
         if (child.children?.length === undefined) { // when element has no children
           this.peopleWithoutChildren.push(child);
