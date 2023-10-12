@@ -11,7 +11,6 @@ export interface UserResponseModel {
   tel: string;
 }
 
-// TODO: refactor
-export interface UserResponseModelWithGroupId extends UserResponseModel {
+export interface UserResponseModelWithGroupId extends UserResponseModel { // TODO: when userBaseModel is added rename UserResponseModelWithGroupId to UserModelWithGroupId
   groupId: string;
 }

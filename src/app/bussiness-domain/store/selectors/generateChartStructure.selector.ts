@@ -6,14 +6,14 @@ import {generateObjectStructureRule} from "../../rules/generateChart/generateObj
 import {calculateChildrenLengthRule} from "../../rules/generateChart/calculate-children-length.rule";
 import {getParentRule} from "../../rules/generateChart/get-parent.rule";
 import {rawChartDataSelector} from "./rawChartData/rawChartData.selector";
-import {GroupsModel} from "../../models/groups.model";
+import {GroupModel} from "../../models/group.model";
 
 export const generateChartStructureSelector = createSelector(
   rawChartDataSelector,
   selectStartUserSelector,
   selectPinnedUserSelector,
   (
-    rawChartData: (UserResponseModel | GroupsModel)[],
+    rawChartData: (UserResponseModel | GroupModel)[],
     startUser,
     pinnedUser
   ) => {

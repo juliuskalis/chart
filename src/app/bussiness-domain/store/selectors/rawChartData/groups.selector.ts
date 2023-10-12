@@ -5,7 +5,7 @@ import {UserResponseModel, UserResponseModelWithGroupId} from "../../../models/u
 import {GroupsResponseModel} from "../../../models/groupsResponse.model";
 import {getUserInGroupRule} from "../../../rules/groupSelection/getUserInGroup.rule";
 import {getUsersInGroupsRule} from "../../../rules/groupSelection/getUsersInGroups.rule";
-import {GroupsModel} from "../../../models/groups.model";
+import {GroupModel} from "../../../models/group.model";
 
 
 export const selectGroups = createSelector(
@@ -13,7 +13,7 @@ export const selectGroups = createSelector(
   selectGroupsData,
   (usersState: UserResponseModel[], groupsState: GroupsResponseModel) => {
     const usersInGroups: UserResponseModelWithGroupId[] = getUserInGroupRule(usersState, groupsState); // create UsersWithGroupId
-    const groups: GroupsModel[] = getUsersInGroupsRule(groupsState.groups, usersInGroups); // adds people to group (groupElement)
+    const groups: GroupModel[] = getUsersInGroupsRule(groupsState.groups, usersInGroups); // adds people to group (groupElement)
     return groups; // returns groups filled with users
   }
 );
