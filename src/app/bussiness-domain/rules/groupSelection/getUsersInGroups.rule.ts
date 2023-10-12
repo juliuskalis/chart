@@ -1,5 +1,5 @@
-import {GroupsResponseModelGroup} from "../../models/groups.model";
-import {GroupWithPeopleModel, StoreDataWithGroupIdModel} from "../../models/storeData.model";
+import {GroupsResponseModelGroup} from "../../models/groupsResponse.model";
+import {GroupWithPeopleModel, StoreDataWithGroupIdModel} from "../../models/userResponse.model";
 
 export function getUsersInGroupsRule(groups: GroupsResponseModelGroup[], users: StoreDataWithGroupIdModel[]): GroupWithPeopleModel[] {
   return groups.map(

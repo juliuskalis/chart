@@ -1,4 +1,4 @@
-import {StoreDataWithGroupIdModel} from "../../models/storeData.model";
+import {StoreDataWithGroupIdModel} from "../../models/userResponse.model";
 
 export function getPeoplesFirstAndLastLetterRule(people: (StoreDataWithGroupIdModel | undefined)[]): (StoreDataWithGroupIdModel | undefined)[] {
   return people.map((el) =>

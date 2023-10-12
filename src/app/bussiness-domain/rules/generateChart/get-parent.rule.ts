@@ -1,13 +1,13 @@
 import {DataGroupModel, DataModel} from "../../models/data.model";
-import {StoreDataModel} from "../../models/storeData.model";
+import {UserResponseModel} from "../../models/userResponse.model";
 
-export function getParentRule(allChildren: (DataModel | DataGroupModel)[], chartData: StoreDataModel[]): (DataModel | DataGroupModel)[] {
+export function getParentRule(allChildren: (DataModel | DataGroupModel)[], usersState: UserResponseModel[]): (DataModel | DataGroupModel)[] {
   let res: (DataModel | DataGroupModel)[] = allChildren; // returns parameter
-  const parent: DataModel | DataGroupModel | undefined = chartData.find(x => x.id === allChildren[0].parentId); // finds parent of allChildren
+  const parent: DataModel | DataGroupModel | undefined = usersState.find(x => x.id === allChildren[0].parentId); // finds parent of allChildren
   if (parent) {
     parent.displayChildren = true;
     parent.children = allChildren; // asigns allChildren to parent
-    res = getParentRule([parent], chartData); // calls method again to get next parent
+    res = getParentRule([parent], usersState); // calls method again to get next parent
   }
   return res;
 

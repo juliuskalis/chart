@@ -9,5 +9,4 @@ export function calculateChildrenLengthRule(children: (DataModel | DataGroupMode
     }
   }
   return res; // returns always o.length
-
 }

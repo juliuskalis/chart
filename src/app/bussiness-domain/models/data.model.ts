@@ -1,4 +1,4 @@
-import {StoreDataWithGroupIdModel} from "./storeData.model";
+import {StoreDataWithGroupIdModel} from "./userResponse.model";
 
 export interface DataModel {
   id: string;

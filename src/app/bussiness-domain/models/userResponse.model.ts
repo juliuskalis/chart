@@ -1,4 +1,4 @@
-export interface StoreDataModel {
+export interface UserResponseModel {
   id: string;
   title: string;
   displayName: string;
@@ -11,6 +11,7 @@ export interface StoreDataModel {
   tel: string;
 }
 
+// TODO: refactor
 export interface StoreDataWithGroupIdModel {
   id: string;
   title: string;
