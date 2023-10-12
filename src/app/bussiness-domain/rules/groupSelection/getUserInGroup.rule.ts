@@ -17,10 +17,10 @@ export function getUserInGroupRule(usersState: UserResponseModel[], groupsState:
   // const a: StoreDataWithGroupIdModel[] = x.filter((group: StoreDataWithGroupIdModel | undefined): boolean => group !== undefined);
 
   const y: StoreDataWithGroupIdModel[] = [];
-  x.forEach((group: StoreDataWithGroupIdModel | undefined) => {
+  x.forEach((group: StoreDataWithGroupIdModel | undefined) => { // removes every undefined element
     if (group) {
       y.push(group);
     }
   });
-  return y;
+  return y; // returns new users with groupId
 }

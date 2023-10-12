@@ -11,8 +11,8 @@ export const selectGroups = createSelector(
   selectUsersData,
   selectGroupsData,
   (usersState: UserResponseModel[], groupsState: GroupsResponseModel) => {
-    const usersInGroups: StoreDataWithGroupIdModel[] = getUserInGroupRule(usersState, groupsState);
-    const groups: GroupWithPeopleModel[] = getUsersInGroupsRule(groupsState.groups, usersInGroups);
-    return groups;
+    const usersInGroups: StoreDataWithGroupIdModel[] = getUserInGroupRule(usersState, groupsState); // create UsersWithGroupId
+    const groups: GroupWithPeopleModel[] = getUsersInGroupsRule(groupsState.groups, usersInGroups); // adds people to group (groupElement)
+    return groups; // returns groups filled with users
   }
 );
