@@ -1,8 +1,8 @@
 import {createReducer} from "@ngrx/store";
-import {GroupsModel} from "../../models/groups.model";
+import {GroupsResponseModel} from "../../models/groups.model";
 
 
-export const initialState: GroupsModel = {
+export const initialState: GroupsResponseModel = {
   groups: [
     {
       groupId: 'g-1',

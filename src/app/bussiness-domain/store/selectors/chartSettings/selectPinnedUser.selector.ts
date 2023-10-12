@@ -1,10 +1,10 @@
 import {createSelector} from "@ngrx/store";
-import {selectChartData} from "../chartDataFeature.selector";
+import {selectUsersData} from "../usersDataFeature.selector";
 import {selectGroups} from "../groups.selector";
 import {GroupWithPeopleModel, StoreDataModel} from "../../../models/storeData.model";
 
 export const selectPinnedUserSelector = createSelector(
-  selectChartData,
+  selectUsersData,
   selectGroups,
   (chartState: StoreDataModel[], groups: GroupWithPeopleModel[]) => {
     const rawChartData: (StoreDataModel | GroupWithPeopleModel)[] = [...chartState, ...groups];

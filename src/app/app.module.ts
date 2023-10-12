@@ -50,7 +50,7 @@ import { ChartUserOrGroupComponent } from './desktop/sites/chart/parts/chart-use
     AppRoutingModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({}, {}),
-    StoreModule.forRoot({ chartData: chartReducer, groupsData: groupsReducer }),
+    StoreModule.forRoot({ usersData: chartReducer, groupsData: groupsReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [],

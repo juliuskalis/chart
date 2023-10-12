@@ -1,5 +1,5 @@
 import {createSelector} from "@ngrx/store";
-import {selectChartData} from "./chartDataFeature.selector";
+import {selectUsersData} from "./usersDataFeature.selector";
 import {GroupWithPeopleModel, StoreDataModel} from "../../models/storeData.model";
 import {selectGroups} from "./groups.selector";
 import {selectStartUserSelector} from "./chartSettings/selectStartUser.selector";
@@ -9,7 +9,7 @@ import {calculateChildrenLengthRule} from "../../rules/generateChart/calculate-c
 import {getParentRule} from "../../rules/generateChart/get-parent.rule";
 
 export const generateChartStructureSelector = createSelector(
-  selectChartData,
+  selectUsersData,
   selectGroups,
   selectStartUserSelector,
   selectPinnedUserSelector,

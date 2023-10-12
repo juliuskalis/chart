@@ -1,9 +1,9 @@
 import {createFeatureSelector, createSelector} from "@ngrx/store";
-import {GroupsModel} from "../../models/groups.model";
+import {GroupsResponseModel} from "../../models/groups.model";
 
-export const selectGroupsDataFeature = createFeatureSelector<GroupsModel>('groupsData');
+export const selectGroupsDataFeature = createFeatureSelector<GroupsResponseModel>('groupsData');
 
 export const selectGroupsData = createSelector(
   selectGroupsDataFeature,
-  (state: GroupsModel) => state
+  (state: GroupsResponseModel) => state
 );

@@ -1,15 +1,14 @@
-export interface GroupsModel {
-  groups: GroupModel[];
-  userInGroup: UserInGroupModel[];
+export interface GroupsResponseModel {
+  groups: GroupsResponseModelGroup[];
+  userInGroup: GroupsResponseModelUser[];
 }
 
-export interface GroupModel {
+export interface GroupsResponseModelGroup {
   groupId: string;
   parentId: string;
-
 }
 
-export interface UserInGroupModel {
+export interface GroupsResponseModelUser {
   userId: string;
   groupId: string;
 }

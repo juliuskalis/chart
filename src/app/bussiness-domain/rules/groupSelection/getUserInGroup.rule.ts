@@ -1,8 +1,8 @@
-import {GroupsModel, UserInGroupModel} from "../../models/groups.model";
+import {GroupsResponseModel, GroupsResponseModelUser} from "../../models/groups.model";
 import {StoreDataModel, StoreDataWithGroupIdModel} from "../../models/storeData.model";
 
-export function getUserInGroupRule(chartState: StoreDataModel[], groupsState: GroupsModel): StoreDataWithGroupIdModel[] {
-  const x = groupsState.userInGroup.map((userInGroup: UserInGroupModel): StoreDataWithGroupIdModel | undefined => {
+export function getUserInGroupRule(chartState: StoreDataModel[], groupsState: GroupsResponseModel): StoreDataWithGroupIdModel[] {
+  const x = groupsState.userInGroup.map((userInGroup: GroupsResponseModelUser): StoreDataWithGroupIdModel | undefined => {
     const user: StoreDataModel | undefined = chartState.find((user: StoreDataModel): boolean => user.id === userInGroup.userId);
     if (user) {
       return {

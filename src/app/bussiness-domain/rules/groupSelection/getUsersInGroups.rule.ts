@@ -1,9 +1,9 @@
-import {GroupModel} from "../../models/groups.model";
+import {GroupsResponseModelGroup} from "../../models/groups.model";
 import {GroupWithPeopleModel, StoreDataWithGroupIdModel} from "../../models/storeData.model";
 
-export function getUsersInGroupsRule(groups: GroupModel[], users: StoreDataWithGroupIdModel[]): GroupWithPeopleModel[] {
+export function getUsersInGroupsRule(groups: GroupsResponseModelGroup[], users: StoreDataWithGroupIdModel[]): GroupWithPeopleModel[] {
   return groups.map(
-    (group: GroupModel): GroupWithPeopleModel => {
+    (group: GroupsResponseModelGroup): GroupWithPeopleModel => {
       return {
         id: group.groupId,
         parentId: group.parentId,
