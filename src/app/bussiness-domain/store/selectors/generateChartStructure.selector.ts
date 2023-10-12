@@ -1,5 +1,5 @@
 import {createSelector} from "@ngrx/store";
-import {selectUsersData} from "./usersDataFeature.selector";
+import {selectUsersData} from "./rawChartData/usersDataFeature.selector";
 import {GroupWithPeopleModel, UserResponseModel} from "../../models/userResponse.model";
 import {selectGroups} from "./rawChartData/groups.selector";
 import {selectStartUserSelector} from "./chartSettings/selectStartUser.selector";
