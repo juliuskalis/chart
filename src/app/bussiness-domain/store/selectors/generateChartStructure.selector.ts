@@ -1,7 +1,7 @@
 import {createSelector} from "@ngrx/store";
 import {selectUsersData} from "./usersDataFeature.selector";
 import {GroupWithPeopleModel, UserResponseModel} from "../../models/userResponse.model";
-import {selectGroups} from "./groups.selector";
+import {selectGroups} from "./rawChartData/groups.selector";
 import {selectStartUserSelector} from "./chartSettings/selectStartUser.selector";
 import {selectPinnedUserSelector} from "./chartSettings/selectPinnedUser.selector";
 import {generateObjectStructureRule} from "../../rules/generateChart/generateObjectStructure.rule";

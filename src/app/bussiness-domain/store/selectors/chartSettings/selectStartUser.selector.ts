@@ -1,6 +1,6 @@
 import {createSelector} from "@ngrx/store";
 import {selectUsersData} from "../usersDataFeature.selector";
-import {selectGroups} from "../groups.selector";
+import {selectGroups} from "../rawChartData/groups.selector";
 import {GroupWithPeopleModel, UserResponseModel} from "../../../models/userResponse.model";
 
 export const selectStartUserSelector = createSelector(
