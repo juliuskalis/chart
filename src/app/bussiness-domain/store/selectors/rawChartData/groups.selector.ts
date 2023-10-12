@@ -1,18 +1,19 @@
 import {createSelector} from "@ngrx/store";
 import {selectUsersData} from "./usersDataFeature.selector";
 import {selectGroupsData} from "./groupsDataFeature.selector";
-import {GroupWithPeopleModel, UserResponseModel, StoreDataWithGroupIdModel} from "../../../models/userResponse.model";
+import {UserResponseModel, UserResponseModelWithGroupId} from "../../../models/userResponse.model";
 import {GroupsResponseModel} from "../../../models/groupsResponse.model";
 import {getUserInGroupRule} from "../../../rules/groupSelection/getUserInGroup.rule";
 import {getUsersInGroupsRule} from "../../../rules/groupSelection/getUsersInGroups.rule";
+import {GroupsModel} from "../../../models/groups.model";
 
 
 export const selectGroups = createSelector(
   selectUsersData,
   selectGroupsData,
   (usersState: UserResponseModel[], groupsState: GroupsResponseModel) => {
-    const usersInGroups: StoreDataWithGroupIdModel[] = getUserInGroupRule(usersState, groupsState); // create UsersWithGroupId
-    const groups: GroupWithPeopleModel[] = getUsersInGroupsRule(groupsState.groups, usersInGroups); // adds people to group (groupElement)
+    const usersInGroups: UserResponseModelWithGroupId[] = getUserInGroupRule(usersState, groupsState); // create UsersWithGroupId
+    const groups: GroupsModel[] = getUsersInGroupsRule(groupsState.groups, usersInGroups); // adds people to group (groupElement)
     return groups; // returns groups filled with users
   }
 );

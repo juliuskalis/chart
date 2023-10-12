@@ -1,7 +1,8 @@
 import {DataGroupModel, DataModel} from "../../models/data.model";
-import {GroupWithPeopleModel, UserResponseModel} from "../../models/userResponse.model";
+import {UserResponseModel} from "../../models/userResponse.model";
+import {GroupsModel} from "../../models/groups.model";
 
-export function getParentRule(allChildren: (DataModel | DataGroupModel)[], rawChartData: (UserResponseModel | GroupWithPeopleModel)[]): (DataModel | DataGroupModel)[] {
+export function getParentRule(allChildren: (DataModel | DataGroupModel)[], rawChartData: (UserResponseModel | GroupsModel)[]): (DataModel | DataGroupModel)[] {
   let res: (DataModel | DataGroupModel)[] = allChildren; // returns parameter
   const parent: DataModel | DataGroupModel | undefined = rawChartData.find(x => x.id === allChildren[0].parentId); // finds parent of allChildren
   if (parent) {

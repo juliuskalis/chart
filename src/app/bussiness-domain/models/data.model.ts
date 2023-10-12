@@ -1,6 +1,6 @@
-import {StoreDataWithGroupIdModel} from "./userResponse.model";
+import {UserResponseModelWithGroupId} from "./userResponse.model";
 
-export interface DataModel {
+export interface DataModel { // TODO: define a "userBaseModel" from which every other extends
   id: string;
   title: string;
   displayName: string;
@@ -20,7 +20,7 @@ export interface DataModel {
 export interface DataGroupModel {
   id: string;
   parentId: string;
-  people: (StoreDataWithGroupIdModel | undefined)[];
+  people: (UserResponseModelWithGroupId | undefined)[];
   displayChildren?: boolean;
   children?: (DataModel | DataGroupModel)[];
   childrenLength?: number;

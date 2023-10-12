@@ -1,8 +1,8 @@
 import {GroupsResponseModel, GroupsResponseModelUser} from "../../models/groupsResponse.model";
-import {UserResponseModel, StoreDataWithGroupIdModel} from "../../models/userResponse.model";
+import {UserResponseModel, UserResponseModelWithGroupId} from "../../models/userResponse.model";
 
-export function getUserInGroupRule(usersState: UserResponseModel[], groupsState: GroupsResponseModel): StoreDataWithGroupIdModel[] {
-  const x = groupsState.userInGroup.map((userInGroup: GroupsResponseModelUser): StoreDataWithGroupIdModel | undefined => {
+export function getUserInGroupRule(usersState: UserResponseModel[], groupsState: GroupsResponseModel): UserResponseModelWithGroupId[] {
+  const x = groupsState.userInGroup.map((userInGroup: GroupsResponseModelUser): UserResponseModelWithGroupId | undefined => {
     const user: UserResponseModel | undefined = usersState.find((user: UserResponseModel): boolean => user.id === userInGroup.userId);
     if (user) {
       return {
@@ -16,8 +16,8 @@ export function getUserInGroupRule(usersState: UserResponseModel[], groupsState:
 
   // const a: StoreDataWithGroupIdModel[] = x.filter((group: StoreDataWithGroupIdModel | undefined): boolean => group !== undefined);
 
-  const y: StoreDataWithGroupIdModel[] = [];
-  x.forEach((group: StoreDataWithGroupIdModel | undefined) => { // removes every undefined element
+  const y: UserResponseModelWithGroupId[] = [];
+  x.forEach((group: UserResponseModelWithGroupId | undefined) => { // removes every undefined element
     if (group) {
       y.push(group);
     }

@@ -12,22 +12,6 @@ export interface UserResponseModel {
 }
 
 // TODO: refactor
-export interface StoreDataWithGroupIdModel {
-  id: string;
-  title: string;
-  displayName: string;
-  firstAndLastLetter: string;
-  parentId: string;
-  firstname: string;
-  lastname: string;
-  department: string;
-  mail: string;
-  tel: string;
+export interface UserResponseModelWithGroupId extends UserResponseModel {
   groupId: string;
-}
-
-export interface GroupWithPeopleModel {
-  id: string;
-  parentId: string;
-  people: (StoreDataWithGroupIdModel | undefined)[];
 }
