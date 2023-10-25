@@ -1,9 +1,4 @@
 import {UserDisplayModel} from "./user-display.model";
-import {UserWithGroupIdModel} from "./user-with-group-id.model";
+import {GroupModel} from "./group.model";
 
-
-export interface GroupChartModel extends UserDisplayModel {
-  id: string;
-  parentId: string;
-  people: UserWithGroupIdModel[];
-}
+export interface GroupChartModel extends GroupModel, UserDisplayModel {}
