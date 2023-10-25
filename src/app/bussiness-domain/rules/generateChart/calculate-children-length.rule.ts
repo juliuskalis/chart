@@ -1,5 +1,6 @@
 import {UserChartModel} from "../../models/user-chart.model";
 import {GroupChartModel} from "../../models/group-chart.model";
+import {isGroupChartModelType} from "../../types/is-chart-model.type";
 
 export function calculateChildrenLengthRule(children: (UserChartModel | GroupChartModel)[]): number {
   let res: number = children.length;
@@ -7,6 +8,9 @@ export function calculateChildrenLengthRule(children: (UserChartModel | GroupCha
     if (el.children && el.children.length > 0) { // when the element has children
       el.childrenLength = calculateChildrenLengthRule(el.children); // calls the method again for childrenLength of current element
       res += el.childrenLength; // assigns the returned value
+      if (isGroupChartModelType(el)) {
+        res += el.people.length - 1; // add count of group members minus 1 because the group already counts as 1
+      }
     }
   }
   return res; // returns always o.length

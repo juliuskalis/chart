@@ -15,7 +15,7 @@ import {GroupChartModel} from "../../../bussiness-domain/models/group-chart.mode
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent {
-  chartData$: Observable<(UserChartModel | GroupChartModel)[] | undefined> = this.store$.select(generateChartStructureSelector);
+  chartData$: Observable<(UserChartModel | GroupChartModel)[]> = this.store$.select(generateChartStructureSelector);
 
   scaleMultiplier: number = 100;
 

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {GroupChartModel} from "../../../../../bussiness-domain/models/group-chart.model";
 import {isGroupChartModelType, isUserChartModelType} from "../../../../../bussiness-domain/types/is-chart-model.type";
 import {UserChartModel} from "../../../../../bussiness-domain/models/user-chart.model";
@@ -8,9 +8,18 @@ import {UserChartModel} from "../../../../../bussiness-domain/models/user-chart.
   templateUrl: './chart-user-or-group.component.html',
   styleUrls: ['./chart-user-or-group.component.scss']
 })
-export class ChartUserOrGroupComponent {
+export class ChartUserOrGroupComponent implements OnInit {
   @Input() user: UserChartModel | GroupChartModel | undefined;
   @Input() selectedUser: string | undefined;
-  protected readonly isUserChartModelType = isUserChartModelType;
-  protected readonly isGroupChartModelType = isGroupChartModelType;
+
+  isUser: UserChartModel | undefined;
+  isGroup: GroupChartModel | undefined;
+
+  ngOnInit() {
+    if (this.user && isUserChartModelType(this.user)) {
+      this.isUser = this.user;
+    } else if (this.user && isGroupChartModelType(this.user)) {
+      this.isGroup = this.user;
+    }
+  }
 }

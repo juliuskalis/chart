@@ -12,7 +12,7 @@ import {UserModel} from "../../../models/user.model";
 export const selectGroups = createSelector(
   selectUsersData,
   selectGroupsData,
-  (usersState: UserModel[], groupsState: GroupsResponseModel) => {
+  (usersState: UserModel[], groupsState: GroupsResponseModel): GroupModel[] => {
     const usersInGroups: UserWithGroupIdModel[] = getUserInGroupRule(usersState, groupsState); // create UsersWithGroupId
     const groups: GroupModel[] = getUsersInGroupsRule(groupsState.groups, usersInGroups); // adds people to group (groupElement)
     return groups; // returns groups filled with users

@@ -7,6 +7,8 @@ import {calculateChildrenLengthRule} from "../../rules/generateChart/calculate-c
 import {getParentRule} from "../../rules/generateChart/get-parent.rule";
 import {rawChartDataSelector} from "./rawChartData/rawChartData.selector";
 import {GroupModel} from "../../models/group.model";
+import {UserChartModel} from "../../models/user-chart.model";
+import {GroupChartModel} from "../../models/group-chart.model";
 
 export const generateChartStructureSelector = createSelector(
   rawChartDataSelector,
@@ -16,8 +18,8 @@ export const generateChartStructureSelector = createSelector(
     rawChartData: (UserModel | GroupModel)[],
     startUser,
     pinnedUser
-  ) => {
-    let result;
+  ): (UserChartModel | GroupChartModel)[] => {
+    let result: (UserChartModel | GroupChartModel)[] = [];
     if (pinnedUser) {
       result = generateObjectStructureRule(pinnedUser, rawChartData);
       result = getParentRule(result, rawChartData);
