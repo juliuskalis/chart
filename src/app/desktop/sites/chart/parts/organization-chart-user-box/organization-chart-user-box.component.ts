@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {OrganizationChartService} from "../../services/organization-chart.service";
-import {User} from "../../models/User";
+import {UserModel} from "../../../../../bussiness-domain/models/user.model";
 
 @Component({
   selector: 'app-part-organization-chart-user-box',
@@ -9,7 +9,7 @@ import {User} from "../../models/User";
 })
 export class OrganizationChartUserBoxComponent {
 
-  @Input() user: User | undefined;
+  @Input() user: UserModel | undefined;
   @Input() selectedUser: string | undefined;
 
   constructor(private organizationChartService: OrganizationChartService) {}
