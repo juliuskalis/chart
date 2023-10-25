@@ -1,13 +1,14 @@
-import {DataGroupModel, DataModel} from "../models/data.model";
+import {UserChartModel} from "../models/user-chart.model";
+import {GroupChartModel} from "../models/group-chart.model";
 
-export function isDataModelType(element: DataModel | DataGroupModel): element is DataModel {
+export function isDataModelType(element: UserChartModel | GroupChartModel): element is UserChartModel {
   return !('people' in element);
 }
 
-export function isDataGroupModelType(element: DataModel | DataGroupModel): element is DataGroupModel {
+export function isDataGroupModelType(element: UserChartModel | GroupChartModel): element is GroupChartModel {
   return ('people' in element);
 }
 
-export function instanceOfA(object: any): object is DataGroupModel {
+export function instanceOfA(object: any): object is GroupChartModel {
   return 'people' in object;
 }

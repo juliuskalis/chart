@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {registerLocaleData} from "@angular/common";
 import de from "@angular/common/locales/de";
-import {DataGroupModel, DataModel} from "../../../../../bussiness-domain/models/data.model";
+import {UserChartModel} from "../../../../../bussiness-domain/models/user-chart.model";
 import {getClassesForLayoutRule} from "../../../../../bussiness-domain/rules/getClassesForLayout.rule";
+import {GroupChartModel} from "../../../../../bussiness-domain/models/group-chart.model";
 
 @Component({
   selector: 'app-part-organization-chart-child',
@@ -11,15 +12,15 @@ import {getClassesForLayoutRule} from "../../../../../bussiness-domain/rules/get
 })
 export class OrganizationChartChildComponent implements OnInit {
 
-  @Input() children: (DataModel | DataGroupModel)[] = [];
+  @Input() children: (UserChartModel | GroupChartModel)[] = [];
   @Input() showName: boolean | undefined;
   @Input() showTitle: boolean | undefined;
   @Input() clipped: string | undefined;
   @Input() selectedUser: string | undefined;
   @Input() scaleMultiplier: number = 100;
 
-  peopleWithoutChildren: (DataModel | DataGroupModel)[] = [];
-  peopleWithChildren: (DataModel | DataGroupModel)[] = [];
+  peopleWithoutChildren: (UserChartModel | GroupChartModel)[] = [];
+  peopleWithChildren: (UserChartModel | GroupChartModel)[] = [];
 
   customStylesClass: string = '';
   parentBoxPadding: number = 0;

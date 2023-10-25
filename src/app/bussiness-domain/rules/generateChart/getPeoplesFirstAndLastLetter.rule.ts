@@ -1,9 +1,9 @@
-import {UserResponseModelWithGroupId} from "../../models/userResponse.model";
+import {UserWithGroupIdModel} from "../../models/user-with-group-id.model";
 
-export function getPeoplesFirstAndLastLetterRule(people: (UserResponseModelWithGroupId | undefined)[]): (UserResponseModelWithGroupId | undefined)[] {
+export function getPeoplesFirstAndLastLetterRule(people: UserWithGroupIdModel[]): UserWithGroupIdModel[] {
   return people.map((el) =>
-    el
-    ? {...el, firstAndLastLetter: el?.firstname?.charAt(0) + '' + el?.lastname?.charAt(0)}
-    : undefined
+    {
+      return {...el, firstAndLastLetter: el?.firstname?.charAt(0) + '' + el?.lastname?.charAt(0)}
+    }
   );
 }

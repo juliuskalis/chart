@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {User} from "../../models/User";
-import {DataGroupModel} from "../../../../../bussiness-domain/models/data.model";
+import {GroupChartModel} from "../../../../../bussiness-domain/models/group-chart.model";
 import {isDataGroupModelType, isDataModelType} from "../../../../../bussiness-domain/types/isDataModel.type";
 
 @Component({
@@ -9,7 +9,7 @@ import {isDataGroupModelType, isDataModelType} from "../../../../../bussiness-do
   styleUrls: ['./chart-user-or-group.component.scss']
 })
 export class ChartUserOrGroupComponent {
-  @Input() user: User | DataGroupModel | undefined;
+  @Input() user: User | GroupChartModel | undefined;
   @Input() selectedUser: string | undefined;
   protected readonly isDataModelType = isDataModelType;
   protected readonly isDataGroupModelType = isDataGroupModelType;

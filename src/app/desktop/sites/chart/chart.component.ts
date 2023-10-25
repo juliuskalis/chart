@@ -3,10 +3,11 @@ import {Observable} from "rxjs";
 import {OrganizationChartService} from "./services/organization-chart.service";
 
 import {Store} from "@ngrx/store";
-import {DataGroupModel, DataModel} from "../../../bussiness-domain/models/data.model";
+import {UserChartModel} from "../../../bussiness-domain/models/user-chart.model";
 import {
   generateChartStructureSelector
 } from "../../../bussiness-domain/store/selectors/generateChartStructure.selector";
+import {GroupChartModel} from "../../../bussiness-domain/models/group-chart.model";
 
 @Component({
   selector: 'app-chart',
@@ -14,7 +15,7 @@ import {
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent {
-  chartData$: Observable<(DataModel | DataGroupModel)[] | undefined> = this.store$.select(generateChartStructureSelector);
+  chartData$: Observable<(UserChartModel | GroupChartModel)[] | undefined> = this.store$.select(generateChartStructureSelector);
 
   scaleMultiplier: number = 100;
 

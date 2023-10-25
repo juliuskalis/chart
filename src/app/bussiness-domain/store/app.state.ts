@@ -1,11 +1,11 @@
 import {ActionReducerMap} from "@ngrx/store";
-import {UserResponseModel} from "../models/userResponse.model";
+import {UserModel} from "../models/user.model";
 import {chartReducer} from "./reducers/chart.reducer";
-import {GroupsResponseModel} from "../models/groupsResponse.model";
+import {GroupsResponseModel} from "../models/groups-response.model";
 import {groupsReducer} from "./reducers/groups.reducer";
 
 export interface AppState {
-  usersData: UserResponseModel[];
+  usersData: UserModel[];
   groupsData: GroupsResponseModel;
 }
 

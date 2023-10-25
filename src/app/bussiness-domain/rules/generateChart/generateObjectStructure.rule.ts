@@ -1,10 +1,11 @@
-import {DataGroupModel, DataModel} from "../../models/data.model";
+import {UserChartModel} from "../../models/user-chart.model";
 import {isDataModelType} from "../../types/isDataModel.type";
 import {getPeoplesFirstAndLastLetterRule} from "./getPeoplesFirstAndLastLetter.rule";
+import {GroupChartModel} from "../../models/group-chart.model";
 
-export function generateObjectStructureRule(chartChildren: (DataModel | DataGroupModel)[], rawChartData: (DataModel | DataGroupModel)[]): (DataModel | DataGroupModel)[] {
-  return chartChildren.map((el) => {
-    const children: (DataModel | DataGroupModel)[] = rawChartData.filter(x => x.parentId === el.id);
+export function generateObjectStructureRule(chartChildren: (UserChartModel | GroupChartModel)[], rawChartData: (UserChartModel | GroupChartModel)[]): (UserChartModel | GroupChartModel)[] {
+  return chartChildren.map((el): UserChartModel | GroupChartModel => {
+    const children: (UserChartModel | GroupChartModel)[] = rawChartData.filter(x => x.parentId === el.id);
     if (isDataModelType(el)) {
         return {
           ...el,

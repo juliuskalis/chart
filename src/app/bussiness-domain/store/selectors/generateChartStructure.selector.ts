@@ -1,5 +1,5 @@
 import {createSelector} from "@ngrx/store";
-import {UserResponseModel} from "../../models/userResponse.model";
+import {UserModel} from "../../models/user.model";
 import {selectStartUserSelector} from "./chartSettings/selectStartUser.selector";
 import {selectPinnedUserSelector} from "./chartSettings/selectPinnedUser.selector";
 import {generateObjectStructureRule} from "../../rules/generateChart/generateObjectStructure.rule";
@@ -13,7 +13,7 @@ export const generateChartStructureSelector = createSelector(
   selectStartUserSelector,
   selectPinnedUserSelector,
   (
-    rawChartData: (UserResponseModel | GroupModel)[],
+    rawChartData: (UserModel | GroupModel)[],
     startUser,
     pinnedUser
   ) => {

@@ -1,5 +1,5 @@
 import {createFeatureSelector, createSelector} from "@ngrx/store";
-import {GroupsResponseModel} from "../../../models/groupsResponse.model";
+import {GroupsResponseModel} from "../../../models/groups-response.model";
 
 export const selectGroupsDataFeature = createFeatureSelector<GroupsResponseModel>('groupsData');
 

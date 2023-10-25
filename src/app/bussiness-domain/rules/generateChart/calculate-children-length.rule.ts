@@ -1,6 +1,7 @@
-import {DataGroupModel, DataModel} from "../../models/data.model";
+import {UserChartModel} from "../../models/user-chart.model";
+import {GroupChartModel} from "../../models/group-chart.model";
 
-export function calculateChildrenLengthRule(children: (DataModel | DataGroupModel)[]): number {
+export function calculateChildrenLengthRule(children: (UserChartModel | GroupChartModel)[]): number {
   let res: number = children.length;
   for (const el of children) { // for every organigram object
     if (el.children && el.children.length > 0) { // when the element has children

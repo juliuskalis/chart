@@ -1,7 +1,7 @@
 import {createReducer} from "@ngrx/store";
-import {UserResponseModel} from "../../models/userResponse.model";
+import {UserModel} from "../../models/user.model";
 
-export const initialState: UserResponseModel[] = [
+export const initialState: UserModel[] = [
   {
     id: "1",
     title: "Software Engineer",
