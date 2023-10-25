@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {slideInAndOut, slideInAndOutPhone, slideInAndOutReversed} from "../../animations/animations";
-import {getSelectedUserBoxLayoutRule} from "../../../../../bussiness-domain/rules/getSelectedUserBoxLayout.rule";
+import {slideInAndOut, slideInAndOutPhone, slideInAndOutReversed} from "../../../animations/animations";
+import {getSelectedUserBoxLayoutRule} from "../../../../../../bussiness-domain/rules/getSelectedUserBoxLayout.rule";
 
 @Component({
   selector: 'app-part-organization-chart-selected-user-box',

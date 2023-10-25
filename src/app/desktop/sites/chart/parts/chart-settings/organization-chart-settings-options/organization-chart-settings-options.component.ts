@@ -4,7 +4,7 @@ import {
   OnDestroy,
   OnInit
 } from '@angular/core';
-import {OrganizationChartService} from "../../services/organization-chart.service";
+import {OrganizationChartService} from "../../../services/organization-chart.service";
 import {Subject, takeUntil} from "rxjs";
 
 @Component({

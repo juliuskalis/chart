@@ -1,9 +1,9 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 // @ts-ignore
-import JSONdata from "../../data.json";
+import JSONdata from "../../../data.json";
 import {Subject, takeUntil} from "rxjs";
-import {OrganizationChartService} from "../../services/organization-chart.service";
-import {scale, transformInOut} from "../../animations/animations";
+import {OrganizationChartService} from "../../../services/organization-chart.service";
+import {scale, transformInOut} from "../../../animations/animations";
 
 @Component({
   selector: 'app-part-organization-chart-settings',

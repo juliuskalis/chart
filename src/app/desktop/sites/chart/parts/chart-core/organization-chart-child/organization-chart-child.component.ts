@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {registerLocaleData} from "@angular/common";
 import de from "@angular/common/locales/de";
-import {UserChartModel} from "../../../../../bussiness-domain/models/user-chart.model";
-import {getClassesForLayoutRule} from "../../../../../bussiness-domain/rules/getClassesForLayout.rule";
-import {GroupChartModel} from "../../../../../bussiness-domain/models/group-chart.model";
+import {UserChartModel} from "../../../../../../bussiness-domain/models/user-chart.model";
+import {getClassesForLayoutRule} from "../../../../../../bussiness-domain/rules/getClassesForLayout.rule";
+import {GroupChartModel} from "../../../../../../bussiness-domain/models/group-chart.model";
 
 @Component({
   selector: 'app-part-organization-chart-child',

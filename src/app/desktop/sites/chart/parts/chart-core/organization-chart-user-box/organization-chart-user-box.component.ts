@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {OrganizationChartService} from "../../services/organization-chart.service";
-import {UserModel} from "../../../../../bussiness-domain/models/user.model";
+import {OrganizationChartService} from "../../../services/organization-chart.service";
+import {UserModel} from "../../../../../../bussiness-domain/models/user.model";
 
 @Component({
   selector: 'app-part-organization-chart-user-box',

@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GroupChartModel} from "../../../../../bussiness-domain/models/group-chart.model";
-import {isGroupChartModelType, isUserChartModelType} from "../../../../../bussiness-domain/types/is-chart-model.type";
-import {UserChartModel} from "../../../../../bussiness-domain/models/user-chart.model";
+import {GroupChartModel} from "../../../../../../bussiness-domain/models/group-chart.model";
+import {isGroupChartModelType, isUserChartModelType} from "../../../../../../bussiness-domain/types/is-chart-model.type";
+import {UserChartModel} from "../../../../../../bussiness-domain/models/user-chart.model";
 
 @Component({
   selector: 'app-part-chart-user-or-group',
