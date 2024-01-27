@@ -1,0 +1,5 @@
+<app-part-organization-chart-user-box *ngIf="user && isUser" [user]="isUser" [selectedUser]="selectedUser"></app-part-organization-chart-user-box>
+
+<div *ngIf="user && isGroup" class="border p-4 flex gap-x-4 border-gray-400">
+  <app-part-organization-chart-user-box *ngFor="let u of isGroup.people" [user]="u" [selectedUser]="selectedUser"></app-part-organization-chart-user-box>
+</div>

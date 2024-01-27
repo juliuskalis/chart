@@ -1,0 +1,24 @@
+.box {
+  background-color: white;
+  padding: 1rem;
+  width: 100%;
+  white-space: nowrap;
+  border-radius: 10px;
+  cursor: pointer;
+  transition-property: box-shadow;
+  transition-duration: 500ms;
+  user-select: none;
+  position: relative;
+  z-index: 1;
+}
+
+.group {
+  background-color: white;
+  padding: 1rem;
+  width: 100%;
+  white-space: nowrap;
+  border-radius: 10px;
+  user-select: none;
+  position: relative;
+  z-index: 1;
+}

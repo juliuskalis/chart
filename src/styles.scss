@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+  font-size: 12px;
+  height: 100%;
+  overflow: auto;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.solidLine {
+  height: 1px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #e5e7eb;
+}

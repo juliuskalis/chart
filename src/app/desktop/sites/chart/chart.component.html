@@ -1,0 +1,13 @@
+<div id='scrollContainer' class="h-full overflow-auto">
+  <div id="scrollContainerContent" class="flex items-center min-h-full pointer-events-auto">
+    <div id='organigram' [ngStyle]="{'zoom': scaleMultiplier + '%'}" class="p-8 mx-auto">
+      <div class='py-4 px-8 bg-white mx-auto max-w-max rounded-xl cursor-default font-semibold'>Emma's Company</div>
+      <ng-container *ngIf="chartData$ | async as chartData">
+        <app-part-organization-chart-child
+          [children]='chartData'
+          [selectedUser]='selectedUserId'>
+        </app-part-organization-chart-child>
+      </ng-container>
+    </div>
+  </div>
+</div>

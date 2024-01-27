@@ -1,0 +1,38 @@
+<div [ngClass]="peopleWithoutChildren.length > 0 && peopleWithChildren.length > 0 ? 'flex' : ''">
+  <div class='peopleList' *ngIf="peopleWithoutChildren.length > 0">
+    <div class="beforeElement" [ngClass]="customStylesClass">
+      <div *ngFor='let child of peopleWithoutChildren' class='w-full'>
+        <app-part-chart-user-or-group [user]="child" [selectedUser]="selectedUser"></app-part-chart-user-or-group>
+      </div>
+    </div>
+  </div>
+
+  <div class='people' *ngIf="peopleWithChildren.length > 0">
+    <div *ngFor='let child of peopleWithChildren' class='relative px-4' [id]="'parentBox-' + child.id">
+      <div class='relative py-8 mx-auto max-w-max'>
+        <div class="parentPerson" [id]="child.id">
+          <app-part-chart-user-or-group [user]="child" [selectedUser]="selectedUser"></app-part-chart-user-or-group>
+        </div>
+        <div class='absolute left-1/2 bottom-[-0.75rem] z-10 translate-x-[-50%]' (click)='toggleChildren(child.id)'>
+          <div class="toggleChildrenButton bg-gray-500 text-white">
+            <ng-container *ngIf="child.displayChildren; else open">
+              -
+            </ng-container>
+            <ng-template #open>
+              +
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      <app-part-organization-chart-child *ngIf='child.displayChildren && child.children' [children]='child.children' [showName]='showName' [showTitle]="showTitle" [clipped]='clipped' [selectedUser]='selectedUser'></app-part-organization-chart-child>
+      <div *ngIf='!child.displayChildren' class="mx-auto text-xs w-fit mt-6 relative flex bg-gray-300 rounded-xl">
+        <div class="bg-gray-200 rounded-xl w-fit px-3 py-2">
+          {{child.childrenLength | number:'':'de'}}
+        </div>
+        <div *ngIf="child.childrenGroupsLength" class="w-fit px-3 py-2">
+          {{child.childrenGroupsLength}} | {{child.childrenPeopleInGroupsLength}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

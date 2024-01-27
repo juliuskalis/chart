@@ -1,0 +1,167 @@
+$lineColor: rgb(156 163 175);
+$space: 2rem;
+
+
+
+.people {
+  display: flex;
+  padding: 0 1rem;
+}
+
+.people > div:before,
+.people > div:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 0;
+  border-top: 1px solid $lineColor;
+  width: 50%;
+  background-color: transparent;
+}
+
+.people > div:before {
+  left: 0;
+}
+
+.people > div:after {
+  left: 50%;
+}
+
+.people > div:first-of-type:before {
+  width: 0;
+}
+
+.flex > .people > div:first-of-type:before {
+  width: 50%;
+}
+
+.people > div:last-of-type:after {
+  width: 0;
+}
+
+
+
+.peopleList {
+  height: max-content;
+  position: relative;
+  padding: 0 calc(#{$space} / 2);
+}
+
+.flex > .peopleList {
+  margin-top: $space;
+}
+
+.flex > .peopleList:before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  height: $space;
+  width: 0;
+  border-left: 1px solid $lineColor;
+  background-color: transparent;
+}
+
+.flex > .peopleList:after {
+  content: '';
+  position: absolute;
+  top: -$space;
+  left: 50%;
+  height: 0;
+  border-top: 1px solid $lineColor;
+  width: calc(50% + (#{$space} / 2));
+  background-color: transparent;
+}
+
+
+
+.parentPerson {
+  position: relative;
+}
+
+.parentPerson:before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  height: $space;
+  width: 0;
+  border-left: 1px solid $lineColor;
+  background-color: transparent;
+  pointer-events: none;
+}
+
+.parentPerson:after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  height: $space;
+  border-left: 1px solid $lineColor;
+  background-color: transparent;
+  pointer-events: none;
+}
+
+
+:not(.flex) > .peopleList > .beforeElement {
+  margin-top: 2rem;
+}
+
+:not(.flex) > .peopleList > .beforeElement:before {
+  content: '';
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  height: $space;
+  border-left: 1px solid $lineColor;
+  background-color: transparent;
+  pointer-events: none;
+}
+
+.cGridColumns {
+  @apply grid p-4 border-gray-400 border gap-4;
+}
+.cGridColumns2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.cGridColumns3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.cGridColumns4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+.cGridColumns5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+.cGridColumns6 {
+  grid-template-columns: repeat(6, 1fr);
+}
+.cGridColumns7 {
+  grid-template-columns: repeat(7, 1fr);
+}
+.cGridColumns8 {
+  grid-template-columns: repeat(8, 1fr);
+}
+.cGridColumns9 {
+  grid-template-columns: repeat(9, 1fr);
+}
+.cGridColumns10 {
+  grid-template-columns: repeat(10, 1fr);
+}
+.cGridColumns11 {
+  grid-template-columns: repeat(11, 1fr);
+}
+.cGridColumns12 {
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.toggleChildrenButton {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  border-radius: 1rem;
+  cursor: pointer;
+}
